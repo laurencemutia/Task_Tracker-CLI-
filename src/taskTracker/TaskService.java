@@ -12,6 +12,22 @@ public class TaskService {
 		this.tasks = tasks;
 	}
 	
+	public void help() {
+		System.out.println("\nAvailable Commands: ");
+		System.out.println("------------------------------------");
+		System.out.println("add \"description\" "
+				+ "\nupdate <id> \"new description\" "
+				+ "\ndelete <id> "
+				+ "\nmark-in-progress <id> "
+				+ "\nmark-done <id> "
+				+ "\nlist "
+				+ "\nlist done "
+				+ "\nlist todo "
+				+ "\nlist in-progress "
+				+ "\nexit");
+		System.out.println("------------------------------------");
+	}
+	
 	public void addTask(String description) {
 		
 	}
