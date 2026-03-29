@@ -53,13 +53,15 @@ public class Main {
 		
 		TaskService taskService = new TaskService(tasks);
 		
+		//Program Loop
 		do {
 			System.out.print("\n> ");
-			String userInput = scan.nextLine().trim();
+			String userInput = scan.nextLine().trim(); //user input and trim spaces after
 			String regex = "[\s]";
-			String[] commandArray = userInput.split(regex);
+			String[] commandArray = userInput.split(regex); //split words using spaces
 			String firstWord = commandArray[0].toLowerCase();//get first word in command array
 			
+			//check if first word is not empty
 			if(!firstWord.isEmpty()) {
 				switch(firstWord) {
 				case "help": taskService.help();
