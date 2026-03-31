@@ -58,7 +58,7 @@ public class Main {
 			System.out.print("\n> ");
 			String userInput = scan.nextLine().trim(); //user input and trim spaces after
 			String regex = "[\s]";
-			String[] commandArray = userInput.split(regex); //split words using spaces
+			String[] commandArray = userInput.split("[\s]"); //split words using spaces
 			String firstWord = commandArray[0].toLowerCase();//get first word in command array
 			
 			//check if first word is not empty

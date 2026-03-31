@@ -1,6 +1,8 @@
 package taskTracker;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import model.Task;
 
@@ -29,14 +31,33 @@ public class TaskService {
 	}
 	
 	public void addTask(String description) {
+		int maxId = 0;
 		
+		//check is description is not empty
+		if(description == null || description.isEmpty()) {
+			System.out.println("Description must not be empty.");
+			return;
+		}
+		
+		//get maxId if have existing tasks
+		for(Task t: tasks) {
+			if(t.id() > maxId) {
+				maxId = t.id();
+			}
+		}
+		
+		//provide ID
+		int id = maxId + 1;
+		
+		//Add new task in arrayList and in the record
+		tasks.add(new Task(id, description, "todo", LocalDateTime.now(), LocalDateTime.now()));
 	}
 	
 	public void updateTask(int id, String desciption) {
 		
 	}
 	
-	public void deleteTask(String id) {
+	public void deleteTask(int id) {
 		
 	}
 	
