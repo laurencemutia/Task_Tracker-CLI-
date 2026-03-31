@@ -2,7 +2,6 @@ package taskTracker;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import model.Task;
 
@@ -49,8 +48,12 @@ public class TaskService {
 		//provide ID
 		int id = maxId + 1;
 		
+		//add time when it created
+		LocalDateTime createdtime = LocalDateTime.now();
+		
 		//Add new task in arrayList and in the record
-		tasks.add(new Task(id, description, "todo", LocalDateTime.now(), LocalDateTime.now()));
+		tasks.add(new Task(id, description, "todo", createdtime, createdtime));
+		System.out.println("[OK] Task Added. \nID: " + id);
 	}
 	
 	public void updateTask(int id, String desciption) {
@@ -66,6 +69,16 @@ public class TaskService {
 	}
 	
 	public void listTasks() {
+		if(tasks.isEmpty()) {
+			System.out.println("No Tasks"); 
+			return;
+		}
+		
+		for(Task t: tasks) {
+			System.out.println("ID: " + t.id());
+			System.out.println("description: " + t.description());
+			System.out.println("status: " + t.status());
+		}
 		
 	}
 	
