@@ -2,6 +2,7 @@ package taskTracker;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import model.Task;
 
@@ -61,17 +62,22 @@ public class TaskService {
 	}
 	
 	public void deleteTask(int id) {
+		
+		Iterator<Task> it = tasks.iterator(); //Iterator for arrayList
 		boolean isFound = false;
 		
-		for(Task t: tasks) {
-			if(t.id() == id) {
+		//if there is more elements in the list
+		while(it.hasNext()) {
+			Task t = it.next(); //get the next element
+			if(t.id() == id) { //check if the element ID is same with userInput ID
 				isFound = true;
-				tasks.remove(t);
+				it.remove(); //Delete that element in the list
 				System.out.println("Task deleted successfully.");
+				return;
 			}
 		}
 		
-		if(!isFound) System.out.println("ID not found.");
+		if(!isFound) System.out.println("Task not found.");
 		
 	}
 	
