@@ -61,6 +61,17 @@ public class TaskService {
 	}
 	
 	public void deleteTask(int id) {
+		boolean isFound = false;
+		
+		for(Task t: tasks) {
+			if(t.id() == id) {
+				isFound = true;
+				tasks.remove(t);
+				System.out.println("Task deleted successfully.");
+			}
+		}
+		
+		if(!isFound) System.out.println("ID not found.");
 		
 	}
 	
@@ -69,11 +80,13 @@ public class TaskService {
 	}
 	
 	public void listTasks() {
+		//check if task is empty
 		if(tasks.isEmpty()) {
 			System.out.println("No Tasks"); 
 			return;
 		}
 		
+		//list all existing tasks
 		for(Task t: tasks) {
 			System.out.println("ID: " + t.id());
 			System.out.println("description: " + t.description());
@@ -89,4 +102,5 @@ public class TaskService {
 	public void loadFromFile() {
 		
 	}
+
 }

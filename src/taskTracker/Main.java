@@ -57,7 +57,6 @@ public class Main {
 		do {
 			System.out.print("\n> ");
 			String userInput = scan.nextLine().trim(); //user input and trim spaces after
-			String regex = "[\s]";
 			String[] commandArray = userInput.split("[\s]"); //split words using spaces
 			String firstWord = commandArray[0].toLowerCase();//get first word in command array
 			
@@ -66,17 +65,22 @@ public class Main {
 				switch(firstWord) {
 				case "help": taskService.help();
 					break;
-				case "add": System.out.println("add"); //just testing 
+				case "add": 
+					if(userInput.length() <= 4) {
+						System.out.println("Please provide description of your task.");
+						break;
+					}
+					taskService.addTask(userInput.substring(4));
 					break;
 				case "update": System.out.println("update");
 					break;
-				case "delete": System.out.println("delete");
+				case "delete": taskService.deleteTask(0);
 					break;
 				case "mark-in-progress": System.out.println("mark in progress");
 					break;
 				case "mark-done": System.out.println("mark-done");
 					break;
-				case "list": System.out.println("list");
+				case "list": taskService.listTasks();
 					break;
 				case "exit": isExit = true;
 					break;
